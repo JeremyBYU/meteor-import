@@ -1,0 +1,39 @@
+/*
+.fixed_headers thead tr {
+  display: block;
+  position: relative;
+  width: 100%;
+}
+.fixed_headers tbody {
+  display: block;
+  overflow: auto;
+  /*width: 100%;*/
+  height: 400px;
+}*/
+
+table.tableSection {
+    display: table;
+    width: 100%;
+}
+table.tableSection thead, table.tableSection tbody {
+    float: left;
+    width: 100%;
+}
+table.tableSection tbody {
+    overflow: auto;
+    height: 400px;
+}
+table.tableSection tr {
+    width: 100%;
+    display: table;
+    text-align: left;
+}
+table.tableSection th:nth-child(1), table.tableSection td:nth-child(1) {
+    width: 25%;
+}
+table.tableSection th:nth-child(2), table.tableSection td:nth-child(2) {
+    width: 60%;
+}
+table.tableSection th:nth-child(3), table.tableSection td:nth-child(3) {
+    width: 15%;
+}
