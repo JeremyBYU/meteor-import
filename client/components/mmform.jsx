@@ -59,7 +59,7 @@ module.exports = React.createClass({
     return (
       <div>
         <h2> Add Book </h2>
-        <Formsy.Form ref="form" className="pure-form pure-form-aligned" onValidSubmit={this.submit} onValid={this.enableButton} onInvalid={this.disableButton}>
+        <Formsy.Form ref="form" className="pure-form pure-form-stacked" onValidSubmit={this.submit} onValid={this.enableButton} onInvalid={this.disableButton}>
           <fieldset>
             <legend>A Stacked Form</legend>
             <MyOwnInput name="title" validations="validateKey:title" label="Title" validationError={titleErrMsg} required/>

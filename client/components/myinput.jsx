@@ -11,7 +11,7 @@ module.exports = React.createClass({
     //Add this just in case there has been an external error from server side invalidation, all other cases error is passed by props
     let errorMessage = this.state._externalError ? this.state._externalError[0] : this.props.validationError;
     return (
-      <div className={className + ' pure-control-group'}>
+      <div className={className}>
             <label htmlFor={this.props.name}>{this.props.label}</label>
             <input name={this.props.name} value={this.getValue()} type="text" onChange={this.changeValue}/>
             <span>{this.state._isValid || this.state._isPristine ? "" : errorMessage}</span>
