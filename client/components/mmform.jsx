@@ -41,14 +41,11 @@ module.exports = React.createClass({
       console.log('What the hell do I do now?')
     }
   },
-  renderCalled() {
-    console.log('Render MmApp called')
-  },
   appendClass(baseClass, newClass) {
     return `${baseClass} ${newClass}`;
   },
   render() {
-    this.renderCalled();
+    //  console.log('Render MmApp called')
     let baseButtonClass = 'pure-button';
     let disabledButtonClass = 'pure-button-disabled';
     let buttonClass = this.state.canSubmit ? baseButtonClass : this.appendClass(baseButtonClass,disabledButtonClass);
@@ -58,10 +55,10 @@ module.exports = React.createClass({
     //  console.log(titleErrMsg);
     return (
       <div>
-        <h2> Add Book </h2>
+        <h2> Book Form </h2>
         <Formsy.Form ref="form" className="pure-form pure-form-stacked" onValidSubmit={this.submit} onValid={this.enableButton} onInvalid={this.disableButton}>
           <fieldset>
-            <legend>A Stacked Form</legend>
+            <legend>Add a book!</legend>
             <MyOwnInput name="title" validations="validateKey:title" label="Title" validationError={titleErrMsg} required/>
             <MyOwnInput name="author" validations="validateKey:author" label="Author" validationError={authorErrMsg} required/>
             <button className={buttonClass} type="submit" disabled={!this.state.canSubmit}>Submit</button>
