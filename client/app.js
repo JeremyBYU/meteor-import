@@ -1,4 +1,4 @@
-let Formsy = require('formsy-react');
+Formsy = require('formsy-react');
 validationContext = Schemas.Book.namedContext("createBookForm");
 
 Formsy.addValidationRule('validateKey', function (values, value, otherField) {

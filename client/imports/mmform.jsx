@@ -1,4 +1,4 @@
-let Formsy = require('formsy-react');
+let Formsy = require('../../node_modules/formsy-react');  //no freaking clue why I need to do it this way
 let MyOwnInput = require('./myinput.jsx');
 // import {MyOwnInput} from "components/myinput"
 
