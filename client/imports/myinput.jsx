@@ -9,7 +9,7 @@ module.exports = React.createClass({
   render: function () {
     //  console.log("Input render called");
     var className = this.showRequired() ? 'required' : this.showError() ? 'error' : null;
-    //Add this just in case there has been an external error from server side invalidation, all other cases error is passed by props
+    //  Add this just in case there has been an external error from server side invalidation, all other cases error is passed by props
     let errorMessage = this.state._externalError ? this.state._externalError[0] : this.props.validationError;
     return (
       <div className={className}>
