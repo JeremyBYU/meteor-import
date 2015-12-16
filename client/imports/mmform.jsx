@@ -44,6 +44,28 @@ module.exports = React.createClass({
   appendClass(baseClass, newClass) {
     return `${baseClass} ${newClass}`;
   },
+  genName2(s1, s2){
+    return `params.${s1}.${s2}`;
+  },
+  genName1(s1){
+    return `params.${s1}`;
+  },
+  genParamComp(index){
+    let keyName = this.genName2(index,"name");
+    let keyAddress = this.genName2(index,"address");
+
+    let nameErrMsg = this.state.validationContext.keyErrorMessage(keyName);
+    let addressErrMsg = this.state.validationContext.keyErrorMessage(keyAddress);
+    return (
+      <div>
+        <MyOwnInput name={keyName} type="text" validations={"validateKey:" + keyName} label="Name" validationError={nameErrMsg} required/>
+
+      </div>
+
+    )
+
+    //  console.log(keyName,keyAddress);
+  },
   render() {
     //  console.log('Render MmApp called')
     let baseButtonClass = 'pure-button';
@@ -51,7 +73,7 @@ module.exports = React.createClass({
     let buttonClass = this.state.canSubmit ? baseButtonClass : this.appendClass(baseButtonClass,disabledButtonClass);
 
     let titleErrMsg = this.state.validationContext.keyErrorMessage("title");
-    let authorErrMsg = this.state.validationContext.keyErrorMessage("author");
+    let pubErrMsg = this.state.validationContext.keyErrorMessage("publisher");
     //  console.log(titleErrMsg);
     return (
       <div>
@@ -60,7 +82,8 @@ module.exports = React.createClass({
           <fieldset>
             <legend>Add a book!</legend>
             <MyOwnInput name="title" validations="validateKey:title" label="Title" validationError={titleErrMsg} required/>
-            <MyOwnInput name="author" validations="validateKey:author" label="Author" validationError={authorErrMsg} required/>
+            <MyOwnInput name="publisher" validations="validateKey:publisher" label="Publisher" validationError={pubErrMsg} required/>
+            {this.genParamComp(1)}
             <button className={buttonClass} type="submit" disabled={!this.state.canSubmit}>Submit</button>
           </fieldset>
         </Formsy.Form>
