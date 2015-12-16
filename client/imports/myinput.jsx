@@ -14,7 +14,7 @@ module.exports = React.createClass({
     return (
       <div className={className}>
             <label htmlFor={this.props.name}>{this.props.label}</label>
-            <input name={this.props.name} value={this.getValue()} type={this.props.type} onChange={this.changeValue}/>
+            <input className="pure-input-1-1" name={this.props.name} value={this.getValue()} type={this.props.type} onChange={this.changeValue}/>
             <span>{this.state._isValid || this.state._isPristine ? "" : errorMessage}</span>
       </div>
     );
