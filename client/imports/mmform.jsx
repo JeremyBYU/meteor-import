@@ -47,22 +47,23 @@ module.exports = React.createClass({
   appendClass(baseClass, newClass) {
     return `${baseClass} ${newClass}`;
   },
-  genName2(s1, s2){
-    return `authors.${s1}.${s2}`;
-  },
   genName3(s1,s2){
     return `authors[${s1}][${s2}]`;
   },
-  genName1(s1){
-    return `authors.${s1}`;
+  genName(s1,s2 = undefined){
+    if(s2 === undefined)
+      return `authors.${s1}`;
+    else {
+      return `authors.${s1}.${s2}`;
+    }
   },
   addAuthor(){
     let numAuthors = this.state.numAuthors;
     this.setState({numAuthors: numAuthors + 1});
   },
   genAuthorComp(index){
-    let keyfName = this.genName2(index,"fname");
-    let keylName = this.genName2(index,"lname");
+    let keyfName = this.genName(index,"fname");
+    let keylName = this.genName(index,"lname");
     let keyfName2 = this.genName3(index,"fname");
     let keylName2 = this.genName3(index,"lname");
 
@@ -78,11 +79,18 @@ module.exports = React.createClass({
       </td>
     )
   },
+  removeAuthor(index){
+    console.log(`Clicked Remove! on ${index}`);
+    let model = this.refs.form.getModel();
+    console.log(`Heres the Model ${JSON.stringify(model)}`);
+  },
   genAuthors(num){
     let authors = [];
+    let hidden = false;
+    num === 1 ? hidden = true : hidden = false
     for(let i = 0; i < num; i++){
-      let keyAuthor = this.genName1(i);
-      authors.push(<tr key={keyAuthor} ><td> <MyRemoveButton numAuthors={this.state.numAuthors} index={keyAuthor}/> </td>{this.genAuthorComp(i)}</tr>)
+      let keyAuthor = this.genName(i);
+      authors.push(<tr key={keyAuthor} ><td> <MyRemoveButton clickHandler={this.removeAuthor.bind(this, i)} hidden={hidden} index={keyAuthor}/> </td>{this.genAuthorComp(i)}</tr>)
     }
     return (authors);
   },
