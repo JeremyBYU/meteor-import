@@ -2,6 +2,7 @@ let Formsy = require('../../node_modules/formsy-react');  //no freaking clue why
 let MyOwnInput = require('./myinput.jsx');
 let MyRemoveButton = require('./mmremove.jsx');
 let Authors = require('./authors.jsx');
+let Form2Obj = require('form-data-to-object');
 // import {MyOwnInput} from "components/myinput"
 
 let MmForm = React.createClass({
@@ -54,10 +55,20 @@ let MmForm = React.createClass({
   },
   removeAuthor(index){
     let numAuthors = this.state.numAuthors;
+
     console.log(`Clicked Remove! on ${index}`);
     //  let model = this.refs.form.getModel();
     //  console.log(`Heres the Model ${JSON.stringify(model)}`);
     this.setState({numAuthors: numAuthors -1});
+    if(index+1 !== numAuthors){
+      //Dummy model until we get Formsy.getModel working
+      let model = {title: 'j1', publisher: 'j2', authors: [{fname:"1",lname:"1"},{fname:"2",lname:"2"}]};
+      //  let authors = model.authors.slice(); //make a copy, something about best pracice immuttable data, yada yada
+      model.authors.splice(index,1); //remove index
+      //  model.authors = authors; //re assign
+      let formKeys = Form2Obj.fromObj(model);
+      this.refs.form.resetModel(formKeys)
+    }
   },
   render() {
     console.log('Render MmForm called')

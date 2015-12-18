@@ -15,7 +15,6 @@ let Author = React.createClass({
     console.log('Author render Called');
     let index = this.props.index;
     validationContext = this.props.validationContext;
-    console.log("Auhtor render called");
     let keyfName = this.genName(index,"fname");
     let keylName = this.genName(index,"lname");
     let keyfName2 = this.genName2(index,"fname");
