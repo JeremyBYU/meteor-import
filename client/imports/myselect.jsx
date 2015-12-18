@@ -31,7 +31,7 @@ let MySelect = React.createClass({
         <select name={this.props.name} onChange={this.changeValue} value={this.getValue()}>
           {options}
         </select>
-        <span className='validation-error'>{errorMessage}</span>
+        <span className='validation-error'>{this.state._isValid || this.state._isPristine ? "" : errorMessage}</span>
       </div>
     );
   }

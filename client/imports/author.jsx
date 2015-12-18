@@ -40,13 +40,11 @@ let Author = React.createClass({
     let lNameErrMsg = validationContext.keyErrorMessage(keylName);
     let gNameErrMsg = validationContext.keyErrorMessage(keygName);
     return (
-      <td>
-        <div className="pure-form pure-form-stacked">
-          <MyOwnInput name={keyfName2} type="text" validations={"validateKey:" + keyfName} label="First Name" validationError={fNameErrMsg} required/>
-          <MyOwnInput name={keylName2} type="text" validations={"validateKey:" + keylName} label="Last Name" validationError={lNameErrMsg} required/>
-          <MySelect name={keygName2} type="text" options={this.state.optionsArray} validations={"validateKey:" + keygName} label="Gender" validationError={gNameErrMsg}/>
-        </div>
-      </td>
+      <div className="pure-form pure-form-stacked">
+        <MyOwnInput name={keyfName2} type="text" validations={"validateKey:" + keyfName} label="First Name" validationError={fNameErrMsg} required/>
+        <MyOwnInput name={keylName2} type="text" validations={"validateKey:" + keylName} label="Last Name" validationError={lNameErrMsg} required/>
+        <MySelect name={keygName2} type="text" options={this.state.optionsArray} validations={"validateKey:" + keygName} label="Gender" validationError={gNameErrMsg}/>
+      </div>
     )
   }
 });

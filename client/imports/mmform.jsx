@@ -53,11 +53,8 @@ let MmForm = React.createClass({
   },
   removeAuthor(index){
     let numAuthors = this.state.numAuthors;
-
-    console.log(`Clicked Remove! on ${index}`);
-    //  let model = this.refs.form.getModel();
-    //  console.log(`Heres the Model ${JSON.stringify(model)}`);
     this.setState({numAuthors: numAuthors -1});
+    //Basically if the deleted Author is not the last in the array, we need to do this tricky stuff below
     if(index+1 !== numAuthors){
       //Dummy model until we get Formsy.getModel working
       let model = {title: 'j1', publisher: 'j2', authors: [{fname:"1",lname:"1"},{fname:"2",lname:"2"}]};
@@ -86,7 +83,7 @@ let MmForm = React.createClass({
             <MyOwnInput name="title" validations="validateKey:title" label="Title" validationError={titleErrMsg} required/>
             <MyOwnInput name="publisher" validations="validateKey:publisher" label="Publisher" validationError={pubErrMsg} required/>
             <Authors clickHandler={this.removeAuthor} validationContext={this.state.validationContext} num={this.state.numAuthors}/>
-            <a onClick={this.addAuthor} className="pure-button" href="javascript:void(0)">Add Author</a>
+            <a onClick={this.addAuthor} className={baseButtonClass} href="javascript:void(0)">Add Author</a>
             <button className={buttonClass} type="submit" disabled={!this.state.canSubmit}>Submit</button>
           </fieldset>
         </Formsy.Form>

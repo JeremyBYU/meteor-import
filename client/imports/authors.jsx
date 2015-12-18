@@ -15,7 +15,12 @@ let Authors = React.createClass({
     this.props.num === 1 ? hidden = true : hidden = false
     for(let i = 0; i < this.props.num; i++){
       let keyAuthor = this.genName(i);
-      authors.push(<tr key={keyAuthor} ><td> <MyRemoveButton clickHandler={this.props.clickHandler.bind(null,i)} hidden={hidden} index={keyAuthor}/> </td><Author index={i} validationContext={this.props.validationContext}/></tr>)
+      authors.push(
+        <tr key={keyAuthor} >
+          <td><MyRemoveButton clickHandler={this.props.clickHandler.bind(null,i)} hidden={hidden} index={keyAuthor}/></td>
+          <td><Author index={i} validationContext={this.props.validationContext}/></td>
+        </tr>
+      );
     }
     return (
       <table className="pure-table pure-table-horizontal">
