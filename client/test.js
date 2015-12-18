@@ -1,9 +1,8 @@
 if (Meteor.isClient) {
   import moment from "moment"
   import Formsy from 'formsy-react'
-  //  import {MmForm} from './components/mmform.jsx'
   let MmForm = require('./imports/mmform.jsx');
-  //  console.log(MmForm);
+
 
   Meteor.startup(function () {
     ReactDOM.render(React.createElement(MmForm, null), document.getElementById("test"));
@@ -20,7 +19,7 @@ if (Meteor.isClient) {
       else {
         return array.reduce(function(previousValue, currentValue, currentIndex, array) {
           return JSON.stringify(previousValue) + JSON.stringify(currentValue)
-        });          
+        });
       }
     }
   });

@@ -1,15 +1,13 @@
 let Formsy = require('../../node_modules/formsy-react');  //no freaking clue why I need to do it this way
 let MyOwnInput = require('./myinput.jsx');
-let MyRemoveButton = require('./mmremove.jsx');
 let Authors = require('./authors.jsx');
 let Form2Obj = require('form-data-to-object');
-// import {MyOwnInput} from "components/myinput"
 
 let MmForm = React.createClass({
   getInitialState: function () {
     return {
       canSubmit: false,
-      validationContext: validationContext,
+      validationContext: Schemas.Book.namedContext("createBookForm"),
       numAuthors: 1
     }
   },
@@ -87,15 +85,7 @@ let MmForm = React.createClass({
             <legend>Add a book!</legend>
             <MyOwnInput name="title" validations="validateKey:title" label="Title" validationError={titleErrMsg} required/>
             <MyOwnInput name="publisher" validations="validateKey:publisher" label="Publisher" validationError={pubErrMsg} required/>
-            <table className="pure-table pure-table-horizontal">
-              <thead>
-                <tr>
-                  <th></th>
-                  <th>Authors : Error Message</th>
-                </tr>
-              </thead>
-                <Authors clickHandler={this.removeAuthor} validationContext={this.state.validationContext} num={this.state.numAuthors}/>
-            </table>
+            <Authors clickHandler={this.removeAuthor} validationContext={this.state.validationContext} num={this.state.numAuthors}/>
             <a onClick={this.addAuthor} className="pure-button" href="javascript:void(0)">Add Author</a>
             <button className={buttonClass} type="submit" disabled={!this.state.canSubmit}>Submit</button>
           </fieldset>

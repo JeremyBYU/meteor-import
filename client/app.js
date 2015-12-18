@@ -1,10 +1,8 @@
 Formsy = require('formsy-react');
-validationContext = Schemas.Book.namedContext("createBookForm");
-
 Formsy.addValidationRule('validateKey', function (values, value, otherField) {
   let object = {}
   object[otherField] = value;
   // console.log(object);
-  let valid = validationContext.validateOne(object,otherField);
+  let valid = Schemas.Book.namedContext("createBookForm").validateOne(object,otherField);
   return valid;
 });

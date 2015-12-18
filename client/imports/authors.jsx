@@ -18,9 +18,17 @@ let Authors = React.createClass({
       authors.push(<tr key={keyAuthor} ><td> <MyRemoveButton clickHandler={this.props.clickHandler.bind(null,i)} hidden={hidden} index={keyAuthor}/> </td><Author index={i} validationContext={this.props.validationContext}/></tr>)
     }
     return (
-      <tbody>
-        {authors}
-      </tbody>
+      <table className="pure-table pure-table-horizontal">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Authors</th>
+          </tr>
+        </thead>
+        <tbody>
+          {authors}
+        </tbody>
+      </table>
     );
   }
 });
