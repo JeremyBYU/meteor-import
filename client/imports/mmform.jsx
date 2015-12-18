@@ -1,6 +1,7 @@
 let Formsy = require('../../node_modules/formsy-react');  //no freaking clue why I need to do it this way
 let MyOwnInput = require('./myinput.jsx');
 let MyRemoveButton = require('./mmremove.jsx');
+let Authors = require('./authors.jsx');
 // import {MyOwnInput} from "components/myinput"
 
 module.exports = React.createClass({
@@ -61,24 +62,6 @@ module.exports = React.createClass({
     let numAuthors = this.state.numAuthors;
     this.setState({numAuthors: numAuthors + 1});
   },
-  genAuthorComp(index){
-    let keyfName = this.genName(index,"fname");
-    let keylName = this.genName(index,"lname");
-    let keyfName2 = this.genName3(index,"fname");
-    let keylName2 = this.genName3(index,"lname");
-
-    console.log(keyfName);
-    let fNameErrMsg = this.state.validationContext.keyErrorMessage(keyfName);
-    let lNameErrMsg = this.state.validationContext.keyErrorMessage(keylName);
-    return (
-      <td>
-        <div className="pure-form pure-form-stacked">
-          <MyOwnInput name={keyfName2} type="text" validations={"validateKey:" + keyfName} label="First Name" validationError={fNameErrMsg} required/>
-          <MyOwnInput name={keylName2} type="text" validations={"validateKey:" + keylName} label="Last Name" validationError={lNameErrMsg} required/>
-        </div>
-      </td>
-    )
-  },
   removeAuthor(index){
     console.log(`Clicked Remove! on ${index}`);
     let model = this.refs.form.getModel();
@@ -90,7 +73,7 @@ module.exports = React.createClass({
     num === 1 ? hidden = true : hidden = false
     for(let i = 0; i < num; i++){
       let keyAuthor = this.genName(i);
-      authors.push(<tr key={keyAuthor} ><td> <MyRemoveButton clickHandler={this.removeAuthor.bind(this, i)} hidden={hidden} index={keyAuthor}/> </td>{this.genAuthorComp(i)}</tr>)
+      authors.push(<tr key={keyAuthor} ><td> <MyRemoveButton clickHandler={this.removeAuthor.bind(this, i)} hidden={hidden} index={keyAuthor}/> </td><Author index={i} validationContext={this.state.validationContext}/></tr>)
     }
     return (authors);
   },
@@ -119,9 +102,7 @@ module.exports = React.createClass({
                   <th>Authors : Error Message</th>
                 </tr>
               </thead>
-              <tbody>
-                {this.genAuthors(this.state.numAuthors)}
-              </tbody>
+                <Authors clickHandler={this.removeAuthor} validationContext={this.state.validationContext} num={this.state.numAuthors}/>
             </table>
             <a onClick={this.addAuthor} className="pure-button" href="javascript:void(0)">Add Author</a>
             <button className={buttonClass} type="submit" disabled={!this.state.canSubmit}>Submit</button>

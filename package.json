@@ -4,7 +4,7 @@
   "description": "Test Meteor Import Functionality and react components with Meteor",
   "main": "index.js",
   "dependencies": {
-    "formsy-react": "git+http://github.com/christianalfoni/formsy-react#4931256",
+    "formsy-react": "0.17.0",
     "moment": "^2.10.6"
   },
   "devDependencies": {},
