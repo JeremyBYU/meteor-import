@@ -1,5 +1,5 @@
 let Formsy = require('../../node_modules/formsy-react');
-module.exports = React.createClass({
+let MyInput = React.createClass({
   // Add the Formsy Mixin
   mixins: [Formsy.Mixin],
 
@@ -20,3 +20,4 @@ module.exports = React.createClass({
     );
   }
 });
+module.exports = MyInput

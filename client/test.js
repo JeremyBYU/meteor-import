@@ -13,5 +13,16 @@ if (Meteor.isClient) {
       return Books.find({}).fetch()
     }
   });
+  Template.book.helpers({
+    authorsFlat: function (array) {
+      if(array.length === 1)
+        return JSON.stringify(array[0])
+      else {
+        return array.reduce(function(previousValue, currentValue, currentIndex, array) {
+          return JSON.stringify(previousValue) + JSON.stringify(currentValue)
+        });          
+      }
+    }
+  });
   console.log(`${moment().calendar()}`);
 }

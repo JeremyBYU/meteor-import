@@ -1,7 +1,7 @@
 let MyOwnInput = require('./myinput.jsx');
-module.exports = React.createClass({
+let Author = React.createClass({
   // Add the Formsy Mixin
-  genName3(s1,s2){
+  genName2(s1,s2){
     return `authors[${s1}][${s2}]`;
   },
   genName(s1,s2 = undefined){
@@ -12,15 +12,16 @@ module.exports = React.createClass({
     }
   },
   render() {
+    console.log('Author render Called');
     let index = this.props.index;
     validationContext = this.props.validationContext;
-    //  console.log("Input render called");
+    console.log("Auhtor render called");
     let keyfName = this.genName(index,"fname");
     let keylName = this.genName(index,"lname");
-    let keyfName2 = this.genName3(index,"fname");
-    let keylName2 = this.genName3(index,"lname");
+    let keyfName2 = this.genName2(index,"fname");
+    let keylName2 = this.genName2(index,"lname");
 
-    console.log(keyfName);
+    //  console.log(keyfName);
     let fNameErrMsg = validationContext.keyErrorMessage(keyfName);
     let lNameErrMsg = validationContext.keyErrorMessage(keylName);
     return (
@@ -33,3 +34,4 @@ module.exports = React.createClass({
     )
   }
 });
+module.exports = Author;

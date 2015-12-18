@@ -1,5 +1,6 @@
-module.exports = React.createClass({
+let MmRemove = React.createClass({
   render: function () {
+    console.log('Mmremove render called');
     let divStyle = {
       display: '',
       background: 'rgb(202, 60, 60)'
@@ -17,3 +18,4 @@ module.exports = React.createClass({
     );
   }
 });
+module.exports = MmRemove;

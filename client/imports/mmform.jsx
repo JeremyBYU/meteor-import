@@ -4,7 +4,7 @@ let MyRemoveButton = require('./mmremove.jsx');
 let Authors = require('./authors.jsx');
 // import {MyOwnInput} from "components/myinput"
 
-module.exports = React.createClass({
+let MmForm = React.createClass({
   getInitialState: function () {
     return {
       canSubmit: false,
@@ -48,37 +48,19 @@ module.exports = React.createClass({
   appendClass(baseClass, newClass) {
     return `${baseClass} ${newClass}`;
   },
-  genName3(s1,s2){
-    return `authors[${s1}][${s2}]`;
-  },
-  genName(s1,s2 = undefined){
-    if(s2 === undefined)
-      return `authors.${s1}`;
-    else {
-      return `authors.${s1}.${s2}`;
-    }
-  },
   addAuthor(){
     let numAuthors = this.state.numAuthors;
     this.setState({numAuthors: numAuthors + 1});
   },
   removeAuthor(index){
+    let numAuthors = this.state.numAuthors;
     console.log(`Clicked Remove! on ${index}`);
-    let model = this.refs.form.getModel();
-    console.log(`Heres the Model ${JSON.stringify(model)}`);
-  },
-  genAuthors(num){
-    let authors = [];
-    let hidden = false;
-    num === 1 ? hidden = true : hidden = false
-    for(let i = 0; i < num; i++){
-      let keyAuthor = this.genName(i);
-      authors.push(<tr key={keyAuthor} ><td> <MyRemoveButton clickHandler={this.removeAuthor.bind(this, i)} hidden={hidden} index={keyAuthor}/> </td><Author index={i} validationContext={this.state.validationContext}/></tr>)
-    }
-    return (authors);
+    //  let model = this.refs.form.getModel();
+    //  console.log(`Heres the Model ${JSON.stringify(model)}`);
+    this.setState({numAuthors: numAuthors -1});
   },
   render() {
-    //  console.log('Render MmApp called')
+    console.log('Render MmForm called')
     let baseButtonClass = 'pure-button';
     let disabledButtonClass = 'pure-button-disabled';
     let buttonClass = this.state.canSubmit ? baseButtonClass : this.appendClass(baseButtonClass,disabledButtonClass);
@@ -86,7 +68,6 @@ module.exports = React.createClass({
     let titleErrMsg = this.state.validationContext.keyErrorMessage("title");
     let pubErrMsg = this.state.validationContext.keyErrorMessage("publisher");
 
-    //  console.log(titleErrMsg);
     return (
       <div>
         <h2> Book Form </h2>
@@ -112,3 +93,4 @@ module.exports = React.createClass({
     );
   }
 });
+module.exports = MmForm;

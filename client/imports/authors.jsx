@@ -1,6 +1,6 @@
 let Author = require('./author.jsx');
 let MyRemoveButton = require('./mmremove.jsx');
-module.exports = React.createClass({
+let Authors = React.createClass({
   genName(s1,s2 = undefined){
     if(s2 === undefined)
       return `authors.${s1}`;
@@ -9,6 +9,7 @@ module.exports = React.createClass({
     }
   },
   render() {
+    console.log("AuthorS render called")
     let authors = [];
     let hidden = false;
     this.props.num === 1 ? hidden = true : hidden = false
@@ -23,3 +24,4 @@ module.exports = React.createClass({
     );
   }
 });
+module.exports = Authors;
