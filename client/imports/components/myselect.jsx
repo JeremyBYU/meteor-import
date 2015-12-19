@@ -5,7 +5,7 @@
 //   { value: "blonde", title: "Blonde" },
 //   { value: "red", title: "Red" }
 // ]}
-let Formsy = require('../../node_modules/formsy-react');
+let Formsy = require('../vendor/formsy-react');
 
 let MySelect = React.createClass({
   mixins: [Formsy.Mixin],

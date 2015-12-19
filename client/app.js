@@ -1,4 +1,4 @@
-Formsy = require('formsy-react');
+Formsy = require('./imports/vendor/formsy-react');
 Formsy.addValidationRule('validateKey', function (values, value, otherField) {
   let object = {}
   object[otherField] = value;

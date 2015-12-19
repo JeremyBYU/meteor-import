@@ -1,4 +1,4 @@
-let Formsy = require('../../node_modules/formsy-react');
+let Formsy = require('../vendor/formsy-react');
 let MyInput = React.createClass({
   // Add the Formsy Mixin
   mixins: [Formsy.Mixin],

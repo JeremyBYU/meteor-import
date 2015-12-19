@@ -1,7 +1,7 @@
-let Formsy = require('../../node_modules/formsy-react');  //no freaking clue why I need to do it this way
+let Formsy = require('../vendor/formsy-react');  //no freaking clue why I need to do it this way
 let MyOwnInput = require('./myinput.jsx');
 let Authors = require('./authors.jsx');
-let Form2Obj = require('form-data-to-object');
+let Form2Obj = require('../vendor/form-data-to-object');
 
 let MmForm = React.createClass({
   getInitialState: function () {
@@ -57,7 +57,8 @@ let MmForm = React.createClass({
     //Basically if the deleted Author is not the last in the array, we need to do this tricky stuff below
     if(index+1 !== numAuthors){
       //Dummy model until we get Formsy.getModel working
-      let model = {title: 'j1', publisher: 'j2', authors: [{fname:"1",lname:"1"},{fname:"2",lname:"2"}]};
+      let model = this.refs.form.getModel();
+      // let model = {title: 'j1', publisher: 'j2', authors: [{fname:"1",lname:"1"},{fname:"2",lname:"2"}]};
       //  let authors = model.authors.slice(); //make a copy, something about best pracice immuttable data, yada yada
       model.authors.splice(index,1); //remove index
       //  model.authors = authors; //re assign

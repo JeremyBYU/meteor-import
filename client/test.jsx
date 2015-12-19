@@ -1,7 +1,7 @@
 if (Meteor.isClient) {
-  import moment from "moment"
-  import Formsy from 'formsy-react'
-  let MmForm = require('./imports/mmform.jsx');
+  let moment = require('moment');
+  // let Formsy = require('formsy-react');
+  let MmForm = require('./imports/components/mmform.jsx');
 
 
   Meteor.startup(function () {

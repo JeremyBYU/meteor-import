@@ -4,7 +4,6 @@
   "description": "Test Meteor Import Functionality and react components with Meteor",
   "main": "index.js",
   "dependencies": {
-    "formsy-react": "0.17.0",
     "moment": "^2.10.6",
     "form-data-to-object": "^0.2.0"
   },
